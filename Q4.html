@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .navbar {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      .menu-items {
+        display: flex;
+      }
+
+      .menu-item {
+        margin-right: 10px;
+      }
+
+      .hamburger-menu {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      /* Media query for smaller screens */
+      @media screen and (max-width: 768px) {
+        .menu-items {
+          display: none;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-top: 10px;
+        }
+
+        .menu-items.show {
+          display: flex;
+        }
+
+        .hamburger-menu {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Logo</div>
+      <div class="menu-items">
+        <div class="menu-item">Home</div>
+        <div class="menu-item">About</div>
+        <div class="menu-item">Services</div>
+        <div class="menu-item">Contact</div>
+      </div>
+      <div class="hamburger-menu">&#9776;</div>
+    </nav>
+
+    <script>
+      var hamburgerMenu = document.querySelector(".hamburger-menu");
+      var menuItems = document.querySelector(".menu-items");
+
+      hamburgerMenu.addEventListener("click", function () {
+        menuItems.classList.toggle("show");
+      });
+    </script>
+  </body>
+</html>

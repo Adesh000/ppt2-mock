@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
+    <style>
+      #loader {
+        width: 100px;
+        height: 20px;
+        background-color: #f2f2f2;
+        animation: loader-animation 1s infinite;
+      }
+
+      @keyframes loader-animation {
+        0% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.5;
+        }
+      }
+
+      .post {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader"></div>
+    <div id="posts"></div>
+
+    <script>
+      var loader = document.getElementById("loader");
+      var postsContainer = document.getElementById("posts");
+
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => {
+          return response.json();
+        })
+        .then((posts) => {
+          loader.style.display = "none";
+
+          posts.forEach((post) => {
+            var postElement = document.createElement("div");
+            postElement.classList.add("post");
+            postElement.innerHTML =
+              "<h3>" + post.title + "</h3>" + "<p>" + post.body + "</p>";
+            postsContainer.appendChild(postElement);
+          });
+        })
+        .catch((error) => {
+          console.log("Error fetching data:", error);
+        });
+    </script>
+  </body>
+</html>

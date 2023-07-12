@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #inputBox {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="inputBox" placeholder="Type something..." />
+    <button id="submitButton">Submit</button>
+    <ul id="textList"></ul>
+
+    <script>
+      var inputBox = document.getElementById("inputBox");
+      var submitButton = document.getElementById("submitButton");
+      var textList = document.getElementById("textList");
+
+      submitButton.addEventListener("click", function () {
+        var text = inputBox.value;
+        if (text !== "") {
+          var listItem = document.createElement("li");
+          listItem.textContent = text;
+          textList.appendChild(listItem);
+          inputBox.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
